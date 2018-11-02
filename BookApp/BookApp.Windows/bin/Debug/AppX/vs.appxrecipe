@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>DESKTOP-89V239U</Machine>
+    <WindowsUser>Ir Christian Scott</WindowsUser>
+    <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
+    <TargetOsVersion>6.3</TargetOsVersion>
+    <TargetOsDescription>Windows 8.1</TargetOsDescription>
+    <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <PackageIdentityName>2235468c-da33-4dce-808e-33b839fa141b</PackageIdentityName>
+    <PackageIdentityPublisher>CN=Ir Christian Scott</PackageIdentityPublisher>
+    <IntermediateOutputPath>C:\Users\Ir Christian Scott\documents\visual studio 2015\Projects\BookApp\BookApp\BookApp.Windows\obj\Debug\</IntermediateOutputPath>
+    <RemoteDeploymentType>
+    </RemoteDeploymentType>
+    <PackageRegistrationPath>
+    </PackageRegistrationPath>
+    <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
+    <RegisteredManifestChecksum>ADAF12336BCEFAB2C63402A4198A2E4760B9994B14319B9005EB21A1A9ACF942</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>2235468c-da33-4dce-808e-33b839fa141b_1.0.0.0_neutral__dprn31snqbvdj</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>2235468c-da33-4dce-808e-33b839fa141b_dprn31snqbvdj!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>2235468c-da33-4dce-808e-33b839fa141b</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=Ir Christian Scott</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+    <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\Ir Christian Scott\documents\visual studio 2015\Projects\BookApp\BookApp\BookApp.Windows\bin\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2017-10-27T16:27:40.525</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\Ir Christian Scott\documents\visual studio 2015\Projects\BookApp\BookApp\BookApp.Windows\bin\Debug\BookApp.Windows.exe">
+      <PackagePath>BookApp.Windows.exe</PackagePath>
+      <Modified>2017-10-29T20:28:26.505</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ir Christian Scott\documents\visual studio 2015\Projects\BookApp\packages\Callisto.1.4.0\lib\netcore451\Callisto.dll">
+      <PackagePath>Callisto.dll</PackagePath>
+      <Modified>2013-10-24T08:21:02.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ir Christian Scott\documents\visual studio 2015\Projects\BookApp\packages\JISoft.Rating.1.0.3\lib\portable-wpa81+win81\JRatingControl.dll">
+      <PackagePath>JRatingControl.dll</PackagePath>
+      <Modified>2015-04-03T13:01:24.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ir Christian Scott\documents\visual studio 2015\Projects\BookApp\packages\Newtonsoft.Json.10.0.3\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll">
+      <PackagePath>Newtonsoft.Json.dll</PackagePath>
+      <Modified>2017-06-18T10:57:10.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ir Christian Scott\documents\visual studio 2015\Projects\BookApp\BookApp\BookApp.Windows\Assets\lilly.jpg">
+      <PackagePath>Assets\lilly.jpg</PackagePath>
+      <Modified>2017-10-26T04:24:36.533</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ir Christian Scott\documents\visual studio 2015\Projects\BookApp\BookApp\BookApp.Windows\Assets\SmallLogo.scale-100.png">
+      <PackagePath>Assets\SmallLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2017-10-25T13:47:09.746</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ir Christian Scott\documents\visual studio 2015\Projects\BookApp\BookApp\BookApp.Windows\Assets\SplashScreen.scale-100.png">
+      <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2017-10-25T15:53:36.766</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ir Christian Scott\documents\visual studio 2015\Projects\BookApp\BookApp\BookApp.Windows\Assets\StoreLogo.scale-100.png">
+      <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2017-10-25T13:47:09.746</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ir Christian Scott\documents\visual studio 2015\Projects\BookApp\BookApp\BookApp.Windows\Assets\Wide310x150Logo.scale-180.png">
+      <PackagePath>Assets\Wide310x150Logo.scale-180.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2017-10-25T15:53:36.766</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ir Christian Scott\documents\visual studio 2015\Projects\BookApp\BookApp\BookApp.Windows\bin\Debug\BookApp.Windows.xr.xml">
+      <PackagePath>BookApp.Windows.xr.xml</PackagePath>
+      <Modified>2017-10-28T17:28:47.857</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ir Christian Scott\documents\visual studio 2015\Projects\BookApp\BookApp\BookApp.Windows\bin\Debug\App.xbf">
+      <PackagePath>App.xbf</PackagePath>
+      <Modified>2017-10-22T16:49:08.378</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ir Christian Scott\documents\visual studio 2015\Projects\BookApp\BookApp\BookApp.Windows\bin\Debug\BookDetail.xbf">
+      <PackagePath>BookDetail.xbf</PackagePath>
+      <Modified>2017-10-28T09:49:06.600</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ir Christian Scott\documents\visual studio 2015\Projects\BookApp\BookApp\BookApp.Windows\bin\Debug\BookList.xbf">
+      <PackagePath>BookList.xbf</PackagePath>
+      <Modified>2017-10-25T08:08:02.310</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ir Christian Scott\documents\visual studio 2015\Projects\BookApp\BookApp\BookApp.Windows\bin\Debug\BookReadView.xbf">
+      <PackagePath>BookReadView.xbf</PackagePath>
+      <Modified>2017-10-28T17:28:47.888</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ir Christian Scott\documents\visual studio 2015\Projects\BookApp\BookApp\BookApp.Windows\bin\Debug\BookSearchResult.xbf">
+      <PackagePath>BookSearchResult.xbf</PackagePath>
+      <Modified>2017-10-26T06:55:05.826</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ir Christian Scott\documents\visual studio 2015\Projects\BookApp\BookApp\BookApp.Windows\bin\Debug\BookWebView.xbf">
+      <PackagePath>BookWebView.xbf</PackagePath>
+      <Modified>2017-10-27T09:20:05.703</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ir Christian Scott\documents\visual studio 2015\Projects\BookApp\BookApp\BookApp.Windows\bin\Debug\GoogleBookSearchResult.xbf">
+      <PackagePath>GoogleBookSearchResult.xbf</PackagePath>
+      <Modified>2017-10-25T03:16:33.684</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ir Christian Scott\documents\visual studio 2015\Projects\BookApp\BookApp\BookApp.Windows\bin\Debug\GoogleBooksList.xbf">
+      <PackagePath>GoogleBooksList.xbf</PackagePath>
+      <Modified>2017-10-25T17:08:03.301</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ir Christian Scott\documents\visual studio 2015\Projects\BookApp\BookApp\BookApp.Windows\bin\Debug\HomePage.xbf">
+      <PackagePath>HomePage.xbf</PackagePath>
+      <Modified>2017-10-27T11:37:35.244</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ir Christian Scott\documents\visual studio 2015\Projects\BookApp\BookApp\BookApp.Windows\bin\Debug\MainPage.xbf">
+      <PackagePath>MainPage.xbf</PackagePath>
+      <Modified>2017-10-24T16:19:14.487</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ir Christian Scott\documents\visual studio 2015\Projects\BookApp\BookApp\BookApp.Windows\bin\Debug\MoochBookSearchResult.xbf">
+      <PackagePath>MoochBookSearchResult.xbf</PackagePath>
+      <Modified>2017-10-26T03:58:33.787</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ir Christian Scott\documents\visual studio 2015\Projects\BookApp\BookApp\BookApp.Windows\bin\Debug\MoochBooksList.xbf">
+      <PackagePath>MoochBooksList.xbf</PackagePath>
+      <Modified>2017-10-26T03:58:33.787</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ir Christian Scott\documents\visual studio 2015\Projects\BookApp\BookApp\BookApp.Windows\bin\Debug\ReadLocalBook.xbf">
+      <PackagePath>ReadLocalBook.xbf</PackagePath>
+      <Modified>2017-10-28T17:28:47.888</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ir Christian Scott\documents\visual studio 2015\Projects\BookApp\BookApp\BookApp.Windows\bin\Debug\Settings.xbf">
+      <PackagePath>Settings.xbf</PackagePath>
+      <Modified>2017-10-24T04:12:40.050</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ir Christian Scott\documents\visual studio 2015\Projects\BookApp\packages\Callisto.1.4.0\lib\netcore451\Callisto\themes\Generic.xbf">
+      <PackagePath>Callisto\themes\Generic.xbf</PackagePath>
+      <Modified>2013-10-24T08:21:02.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ir Christian Scott\documents\visual studio 2015\Projects\BookApp\packages\JISoft.Rating.1.0.3\lib\portable-wpa81+win81\JRatingControl\JRatingControl.xr.xml">
+      <PackagePath>JRatingControl\JRatingControl.xr.xml</PackagePath>
+      <Modified>2015-04-03T13:01:24.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ir Christian Scott\documents\visual studio 2015\Projects\BookApp\packages\JISoft.Rating.1.0.3\lib\portable-wpa81+win81\JRatingControl\Themes\Generic.xbf">
+      <PackagePath>JRatingControl\Themes\Generic.xbf</PackagePath>
+      <Modified>2015-04-03T13:01:24.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Ir Christian Scott\documents\visual studio 2015\Projects\BookApp\BookApp\BookApp.Windows\bin\Debug\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <Modified>2017-10-27T16:27:39.469</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

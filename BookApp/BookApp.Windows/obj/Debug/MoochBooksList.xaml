@@ -1,0 +1,138 @@
+﻿<Page
+    x:Name="pageRoot"
+    x:Class="BookApp.MoochBooksList"
+    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BookApp"
+    xmlns:common="using:BookApp.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <x:String x:Key="ChevronGlyph">&#xE26B;</x:String>
+        <CollectionViewSource
+            x:Name="moochGroupedItems"
+            Source="{Binding Groups}"
+            IsSourceGrouped="true"/>
+
+        <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
+        <x:String x:Key="AppName">My Application</x:String>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Horizontal scrolling grid -->
+        <GridView x:ConnectionId='1'
+            x:Name="booksItemView"
+            AutomationProperties.AutomationId="ItemGridView"
+            AutomationProperties.Name="Grouped Items"
+            Grid.RowSpan="2"
+            Padding="116,137,40,46"
+            ItemsSource="{Binding Source={StaticResource moochGroupedItems}}"
+            SelectionMode="None"
+            IsItemClickEnabled="True"
+                                               
+            IsSwipeEnabled="false">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <Grid HorizontalAlignment="Left" Width="250" Height="320">
+                        <Border Background="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}">
+                            <Image Source="{Binding MediumImage_URL}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}"/>
+                        </Border>
+                        <StackPanel VerticalAlignment="Bottom" Background="{ThemeResource ListViewItemOverlayBackgroundThemeBrush}">
+                            <TextBlock Text="{Binding Title}" Foreground="{ThemeResource ListViewItemOverlayForegroundThemeBrush}" FontSize="18" Style="{StaticResource TitleTextBlockStyle}" Height="60" Margin="15,0,15,0"/>
+                            <TextBlock Text="{Binding Author}" Foreground="{ThemeResource ListViewItemOverlaySecondaryForegroundThemeBrush}" FontSize="16" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap" Margin="15,0,15,10"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+            <GridView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <ItemsWrapGrid GroupPadding="0,0,70,0"/>
+                </ItemsPanelTemplate>
+            </GridView.ItemsPanel>
+            <GridView.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,0,0,2">
+                                <Button Foreground="{ThemeResource ApplicationHeaderForegroundThemeBrush}"
+                                    AutomationProperties.Name="Group Title"
+                                    Style="{StaticResource TextBlockButtonStyle}" >
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Group}" Margin="0,-11,10,10" Style="{StaticResource SubheaderTextBlockStyle}" TextWrapping="NoWrap" />
+                                        <TextBlock Text="{StaticResource ChevronGlyph}" FontFamily="Segoe UI Symbol" Margin="0,-11,0,10" Style="{StaticResource SubheaderTextBlockStyle}" TextWrapping="NoWrap" />
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                </GroupStyle>
+            </GridView.GroupStyle>
+        </GridView>
+
+        <!-- Back button and page title -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:ConnectionId='2' x:Name="backButton" Margin="39,59,39,0" Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
+                        Style="{StaticResource NavigationBackButtonNormalStyle}"
+                        VerticalAlignment="Top"
+                        AutomationProperties.Name="Back"
+                        AutomationProperties.AutomationId="BackButton"
+                        AutomationProperties.ItemType="Navigation Button"
+                                                />
+
+            <RadioButton x:ConnectionId='3' x:Name="googleBooks"                               Margin="0,0,30,40" Style="{StaticResource TextBlockButtonStyle}" Grid.Column="1" VerticalAlignment="Bottom">
+                <TextBlock Text="Google Books" Foreground="#CCC"  Style="{StaticResource HeaderTextBlockStyle}" 
+                        IsHitTestVisible="false" TextWrapping="NoWrap" />
+            </RadioButton>
+
+            <TextBlock x:Name="moochBooks" Foreground="#FFF" Text="Book Mooch" Margin="370,0,30,40" Style="{StaticResource HeaderTextBlockStyle}"
+                        IsHitTestVisible="false" TextWrapping="NoWrap" Grid.Column="1" VerticalAlignment="Bottom" />
+            
+            <SearchBox x:ConnectionId='4' x:Name="searchBox" Padding="10" HorizontalAlignment="Right" VerticalAlignment="Top" PlaceholderText="Search Book In Mooch Books" Grid.Column="1" Margin="0,48,100,0" Height="50" FontSize="18" Width="463"                                           FocusOnKeyboardInput="True" />
+            <Button x:ConnectionId='5' x:Name="refreshButon" Margin="0,51,36,0"
+                        BorderThickness="0"
+                        Content="&#xe117;" FontFamily="Segoe UI Symbol"
+                        VerticalAlignment="Top"
+                        AutomationProperties.Name="Back"
+                        AutomationProperties.AutomationId="BackButton"
+                        AutomationProperties.ItemType="Navigation Button" Grid.Column="1"
+                        HorizontalAlignment="Right"
+                        FontSize="20"
+                                                  />
+        </Grid>
+        <ProgressRing x:Name="dataLoader" FontSize="30" Foreground="White" Margin="0,480" Visibility="Collapsed" Width="80" Height="80" HorizontalAlignment="Center" IsActive="True" />
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="ResultStates">
+                <VisualState x:Name="ResultsFound" />
+                <!-- When there are no results, the results panel is replaced with an informational TextBlock -->
+                <VisualState x:Name="NoResultsFound">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="booksItemView" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="dataLoader" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</Page>
+

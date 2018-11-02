@@ -1,0 +1,169 @@
+﻿<Page
+    x:Name="pageRoot"
+    x:Class="BookApp.GoogleBookSearchResult"
+    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BookApp"
+    xmlns:common="using:BookApp.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:ExtensionType="Search">
+
+    <Page.Resources>
+        <CollectionViewSource x:Name="resultsViewSource" Source="{Binding Results}"/>
+        <CollectionViewSource x:Name="filtersViewSource" Source="{Binding Filters}"/>
+        <common:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <!-- TODO: Update the following string to be the name of your app -->
+        <x:String x:Key="AppName">Google Books Search Result</x:String>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="resultsPanel" Grid.Row="1">
+
+            <Grid x:Name="typicalPanel">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <ItemsControl
+                    x:Name="filtersItemsControl"
+                    Canvas.ZIndex="1"
+                    Margin="120,-3,120,30"
+                    ItemsSource="{Binding Source={StaticResource filtersViewSource}}"
+                    Visibility="{Binding ShowFilters, Converter={StaticResource BooleanToVisibilityConverter}}">
+
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <RadioButton
+                                Margin="0,0,30,0"
+                                GroupName="Filters"
+                                IsChecked="{Binding Active, Mode=TwoWay}"
+                                Checked="Filter_Checked"
+                                Style="{StaticResource TextBlockButtonStyle}">
+                                <TextBlock Text="{Binding Group}"  TextWrapping="NoWrap"
+                                           Margin="3,-7,3,10" Style="{StaticResource SubheaderTextBlockStyle}" />
+                            </RadioButton>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <GridView
+                    x:Name="resultsGridView"
+                    AutomationProperties.AutomationId="ResultsGridView"
+                    AutomationProperties.Name="Search Results"
+                    TabIndex="1"
+                    Grid.Row="1"
+                    Margin="0,-238,0,0"
+                    Padding="110,240,110,46"
+                    SelectionMode="None"
+                    IsSwipeEnabled="false"
+                    IsItemClickEnabled="True"
+                    ItemClick="resultsGridView_ItemClick"
+                    ItemsSource="{Binding Source={StaticResource resultsViewSource}}">
+                    <GridView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Width="294" Margin="6" Height="200">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Background="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" Margin="0,0,0,10" Width="130" Height="200">
+                                    <Image Source="{Binding volumeInfo.imageLinks.thumbnail}" Stretch="UniformToFill"/>
+                                </Border>
+                                <StackPanel Grid.Column="1" Margin="10,50,0,0">
+                                    <TextBlock Text="{Binding volumeInfo.title}" TextWrapping="Wrap" FontSize="20" Style="{StaticResource BodyTextBlockStyle}"/>
+                                    <TextBlock Text="{Binding volumeInfo.authors[0]}" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" Foreground="{ThemeResource ApplicationSecondaryForegroundThemeBrush}"/>
+                                    <TextBlock Text="{Binding volumeInfo.publishedDate}" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}" Foreground="{ThemeResource ApplicationSecondaryForegroundThemeBrush}"/>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                    <GridView.ItemContainerStyle>
+                        <Style TargetType="Control">
+                            <Setter Property="Height" Value="200"/>
+                            <Setter Property="Margin" Value="0,0,38,8"/>
+                        </Style>
+                    </GridView.ItemContainerStyle>
+                </GridView>
+            </Grid>
+        </Grid>
+
+        <!-- Back button and page title -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="backButton" Margin="39,59,39,0" Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
+                        Style="{StaticResource NavigationBackButtonNormalStyle}"
+                        VerticalAlignment="Top"
+                        AutomationProperties.Name="Back"
+                        AutomationProperties.AutomationId="BackButton"
+                        AutomationProperties.ItemType="Navigation Button"
+                        Click="backButton_Click"/>
+            <TextBlock x:Name="pageTitle" Text="{StaticResource AppName}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
+                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
+            <TextBlock x:Name="resultText" Grid.Column="2" Text="Results for &#x00a0;" IsHitTestVisible="false" Style="{StaticResource SubheaderTextBlockStyle}"
+                       TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,0,40" />
+            <TextBlock x:Name="queryText" Grid.Column="3" Text="{Binding QueryText}" IsHitTestVisible="false" Style="{StaticResource SubheaderTextBlockStyle}"
+                       TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,0,40" />
+        </Grid>
+
+        <TextBlock
+            x:Name="noResultsTextBlock"
+            Grid.Row="1"
+            Margin="120,50,0,0"
+            Visibility="Collapsed"
+            Style="{StaticResource SubheaderTextBlockStyle}"
+            Text="No results match your search." />
+
+        <ProgressRing x:Name="dataLoader" FontSize="30" Foreground="White" Margin="0,480" Visibility="Collapsed" Width="80" Height="80" HorizontalAlignment="Center" IsActive="True" />
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="ResultStates">
+                <VisualState x:Name="ResultsFound" />
+                <!-- When there are no results, the results panel is replaced with an informational TextBlock -->
+                <VisualState x:Name="NoResultsFound">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="resultsGridView" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="noResultsTextBlock" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="loadingData">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="resultsGridView" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="dataLoader" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</Page>

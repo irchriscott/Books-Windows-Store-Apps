@@ -1,0 +1,8 @@
+<XamlCompilerSaveState>
+  <ReferenceAssemblyList>
+    <LocalAssembly PathName="c:\users\ir christian scott\documents\visual studio 2015\projects\bookapp\bookapp\bookapp.windows\obj\debug\intermediatexaml\bookapp.windows.exe" HashGuid="650fb575-82c7-6044-9fa0-ef095a0221ae" />
+    <ReferenceAssembly PathName="c:\users\ir christian scott\documents\visual studio 2015\projects\bookapp\packages\callisto.1.4.0\lib\netcore451\callisto.dll" HashGuid="2e1ab8d4-b948-5a13-39d6-e24ac2a3055f" />
+    <ReferenceAssembly PathName="c:\users\ir christian scott\documents\visual studio 2015\projects\bookapp\packages\jisoft.rating.1.0.3\lib\portable-wpa81+win81\jratingcontrol.dll" HashGuid="404d1537-603d-fde1-aa59-115669ee8e27" />
+    <ReferenceAssembly PathName="c:\users\ir christian scott\documents\visual studio 2015\projects\bookapp\packages\newtonsoft.json.10.0.3\lib\portable-net45+win8+wp8+wpa81\newtonsoft.json.dll" HashGuid="e252f182-a27a-2e87-e780-fe0ba98fcc94" />
+  </ReferenceAssemblyList>
+</XamlCompilerSaveState>

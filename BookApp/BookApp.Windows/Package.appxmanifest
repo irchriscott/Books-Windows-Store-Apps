@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
+  <Identity Name="2235468c-da33-4dce-808e-33b839fa141b" Publisher="CN=Ir Christian Scott" Version="1.0.0.0" />
+  <Properties>
+    <DisplayName>BookApp.Windows</DisplayName>
+    <PublisherDisplayName>Ir Christian Scott</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.3.0</OSMinVersion>
+    <OSMaxVersionTested>6.3.0</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="BookApp.Windows.App">
+      <m2:VisualElements DisplayName="Free Library" Square150x150Logo="Assets/SmallLogo.scale-100.png" Square30x30Logo="Assets\SmallLogo.png" Description="BookApp.Windows" ForegroundText="light" BackgroundColor="#464646" ToastCapable="true">
+        <m2:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png">
+        </m2:DefaultTile>
+        <m2:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#666666" />
+      </m2:VisualElements>
+      <Extensions>
+        <Extension Category="windows.search" />
+        <Extension Category="windows.printTaskSettings" />
+        <Extension Category="windows.fileSavePicker">
+          <FileSavePicker>
+            <SupportedFileTypes>
+              <FileType>.pdf</FileType>
+            </SupportedFileTypes>
+          </FileSavePicker>
+        </Extension>
+        <Extension Category="windows.fileOpenPicker">
+          <FileOpenPicker>
+            <SupportedFileTypes>
+              <FileType>.pdf</FileType>
+            </SupportedFileTypes>
+          </FileOpenPicker>
+        </Extension>
+        <Extension Category="windows.cachedFileUpdater" />
+        <Extension Category="windows.fileTypeAssociation">
+          <FileTypeAssociation Name="pdf">
+            <DisplayName>Free Library Reader</DisplayName>
+            <Logo>Assets\SmallLogo.scale-100.png</Logo>
+            <InfoTip>Free Library Reader</InfoTip>
+            <EditFlags OpenIsSafe="true" />
+            <SupportedFileTypes>
+              <FileType>.pdf</FileType>
+            </SupportedFileTypes>
+          </FileTypeAssociation>
+        </Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <Capability Name="documentsLibrary" />
+    <Capability Name="internetClientServer" />
+    <Capability Name="removableStorage" />
+    <Capability Name="sharedUserCertificates" />
+  </Capabilities>
+</Package>

@@ -1,0 +1,103 @@
+﻿<Page
+    x:Name="pageRoot"
+    x:Class="BookApp.BookReadView"
+    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BookApp"
+    xmlns:common="using:BookApp.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <!-- Collection of items displayed by this page -->
+        <CollectionViewSource
+        x:Name="itemsViewSource"
+        Source="{Binding Items}"/>
+    </Page.Resources>
+    <Page.TopAppBar>
+        <AppBar Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" VerticalAlignment="Top" Height="110" BorderBrush="Transparent" BorderThickness="0">
+            <StackPanel Orientation="Horizontal" Margin="0,0,40,0">
+                <Button x:Name="backButton" Margin="30" Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
+                   Style="{StaticResource NavigationBackButtonNormalStyle}"
+                   VerticalAlignment="Top"
+                   AutomationProperties.Name="Back"
+                   AutomationProperties.AutomationId="BackButton"
+                   AutomationProperties.ItemType="Navigation Button"
+                   Click="backButton_Click"/>
+                <TextBlock x:Name="pageTitle" TextWrapping="NoWrap" FontSize="40" Margin="0,30" Style="{StaticResource SubheaderTextBlockStyle}" />
+                <TextBlock x:Name="pageCount" HorizontalAlignment="Right" TextAlignment="Right" TextWrapping="NoWrap" FontSize="40" Margin="0,30" Foreground="White" Style="{StaticResource SubheaderTextBlockStyle}" />
+            </StackPanel>
+        </AppBar>
+    </Page.TopAppBar>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Popup x:Name="popUp" IsOpen="True" Width="600" Height="170" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Background="#eee" Orientation="Vertical" Width="600" Height="170">
+                <ProgressBar x:Name="progressLoader" Height="30" Background="#999" Margin="30" />
+                <TextBlock x:Name="progressStatus" FontSize="25" Foreground="#333" Margin="30,-10,30,0" />
+                <TextBlock x:Name="downloadSize" FontSize="25" Foreground="#333" Margin="30,10,30,0" />
+            </StackPanel>
+        </Popup>
+
+        <!-- Vertical scrolling item list -->
+        <ScrollViewer>
+            <GridView
+            x:Name="bookPagesView"
+            AutomationProperties.AutomationId="ItemsListView"
+            AutomationProperties.Name="Items"
+            TabIndex="1"
+            Grid.Row="1"
+            Margin="0,40,0,40"
+            IsItemClickEnabled="False"
+            IsDoubleTapEnabled="False"
+            IsHitTestVisible="False"
+            IsZoomedInView="True"
+            IsSwipeEnabled="False">
+                <GridView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="350,10">
+                            <Border HorizontalAlignment="Center" Background="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}">
+                                <Image Source="{Binding ImagePath}" HorizontalAlignment="Center" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}"/>
+                            </Border>
+                        </Grid>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+                <GridView.ItemContainerStyle>
+                    <Style TargetType="FrameworkElement">
+                        <Setter Property="HorizontalAlignment" Value="Center" />
+                    </Style>
+                </GridView.ItemContainerStyle>
+                <GridView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <ItemsWrapGrid GroupPadding="0,0,70,0" Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </GridView.ItemsPanel>
+            </GridView>
+        </ScrollViewer>
+        <ProgressRing x:Name="dataLoader" FontSize="30" Foreground="White" Margin="0,480" Visibility="Collapsed" Width="80" Height="80" HorizontalAlignment="Center" IsActive="True" />
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="ResultStates">
+                <VisualState x:Name="ResultsFound" />
+                <!-- When there are no results, the results panel is replaced with an informational TextBlock -->
+                <VisualState x:Name="NoResultsFound">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="bookPagesView" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="dataLoader" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</Page>

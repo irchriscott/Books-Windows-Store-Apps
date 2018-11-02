@@ -1,0 +1,1 @@
+C:\Users\Ir Christian Scott\Documents\Visual Studio 2015\Projects\BookApp\BookApp\BookApp.WindowsPhone\BookApp.WindowsPhone.csproj;neutral
